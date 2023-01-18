@@ -63,12 +63,6 @@ function renderGreenPeppers() {
 }
 
 function renderWhiteSauce() {
-  // const whiteSouce = document.querySelector('.sauce-white');
-  // if (state.whiteSauce) {
-  //   whiteSouce.style.visibility = 'visible';
-  // } else {
-  //   whiteSouce.style.visibility = 'hidden';
-  // }
   const sauce = document.querySelector('.sauce');
   if (state.whiteSauce) {
     sauce.classList.add('sauce-white');
@@ -87,13 +81,6 @@ function renderGlutenFreeCrust() {
 }
 
 function renderButtons() {
-  // const btns = document.querySelectorAll('.btn');
-  // for (const property in state) {
-  //   if (state[property]) {
-
-  //   }
-  // }
-
   const pepBtn = document.querySelector('.btn-pepperoni');
   const mushBtn = document.querySelector('.btn-mushrooms');
   const greenPepBtn = document.querySelector('.btn-green-peppers');
@@ -127,15 +114,29 @@ function renderButtons() {
 }
 
 function renderPrice() {
-  // const sideNote = document.querySelector('.panel');
-  // const ingList = sideNote.getElementsByTagName('li');
-  // let tempArr = [];
-  // for (const property in state) {
-  //   if (state[property]) {
-  //     tempArr.push(property);
-  //   }
-  // }
-  // console.log(tempArr);
+  const ingLis = document.querySelectorAll('.price ul li');
+  const totalPriceEl = document.querySelector('.price strong');
+
+  ingLis.forEach((lis) => {
+    lis.style.display = 'none';
+  });
+
+  let tempArr = [];
+  for (const property in state) {
+    if (state[property]) {
+      tempArr.push(ingredients[property]);
+    }
+  }
+  tempArr.forEach((ing) => {
+    const listItem = document.createElement('li');
+    const ingredient = document.createTextNode(`$${ing.price} ${ing.name}`);
+    listItem.appendChild(ingredient);
+    const list = document.querySelector('.price ul');
+    list.appendChild(listItem);
+  });
+  console.log(tempArr);
+  let totalPrice = tempArr.reduce((acc, cur) => acc + cur.price, 0) + 10;
+  totalPriceEl.innerHTML = `$${totalPrice}`;
 }
 
 renderEverything();
