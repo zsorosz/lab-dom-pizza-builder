@@ -63,11 +63,17 @@ function renderGreenPeppers() {
 }
 
 function renderWhiteSauce() {
-  const whiteSouce = document.querySelector('.sauce-white');
+  // const whiteSouce = document.querySelector('.sauce-white');
+  // if (state.whiteSauce) {
+  //   whiteSouce.style.visibility = 'visible';
+  // } else {
+  //   whiteSouce.style.visibility = 'hidden';
+  // }
+  const sauce = document.querySelector('.sauce');
   if (state.whiteSauce) {
-    whiteSouce.style.visibility = 'visible';
+    sauce.classList.add('sauce-white');
   } else {
-    whiteSouce.style.visibility = 'hidden';
+    sauce.classList.remove('sauce-white');
   }
 }
 
@@ -81,11 +87,55 @@ function renderGlutenFreeCrust() {
 }
 
 function renderButtons() {
-  // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  // const btns = document.querySelectorAll('.btn');
+  // for (const property in state) {
+  //   if (state[property]) {
+
+  //   }
+  // }
+
+  const pepBtn = document.querySelector('.btn-pepperoni');
+  const mushBtn = document.querySelector('.btn-mushrooms');
+  const greenPepBtn = document.querySelector('.btn-green-peppers');
+  const sauceBtn = document.querySelector('.btn-sauce');
+  const crustBtn = document.querySelector('.btn-crust');
+  if (state.pepperoni) {
+    pepBtn.classList.add('active');
+  } else {
+    pepBtn.classList.remove('active');
+  }
+  if (state.mushrooms) {
+    mushBtn.classList.add('active');
+  } else {
+    mushBtn.classList.remove('active');
+  }
+  if (state.greenPeppers) {
+    greenPepBtn.classList.add('active');
+  } else {
+    greenPepBtn.classList.remove('active');
+  }
+  if (state.whiteSauce) {
+    sauceBtn.classList.add('active');
+  } else {
+    sauceBtn.classList.remove('active');
+  }
+  if (state.glutenFreeCrust) {
+    crustBtn.classList.add('active');
+  } else {
+    crustBtn.classList.remove('active');
+  }
 }
 
 function renderPrice() {
-  // Iteration 4: change the HTML of `<aside class="panel price">`
+  // const sideNote = document.querySelector('.panel');
+  // const ingList = sideNote.getElementsByTagName('li');
+  // let tempArr = [];
+  // for (const property in state) {
+  //   if (state[property]) {
+  //     tempArr.push(property);
+  //   }
+  // }
+  // console.log(tempArr);
 }
 
 renderEverything();
